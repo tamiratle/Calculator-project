@@ -1,0 +1,12 @@
+.keys {
+  position: relative;
+  z-index: 1;
+}
+
+.keys button {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  touch-action: manipulation;
+  cursor: pointer;
+}

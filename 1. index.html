@@ -1,0 +1,156 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculator</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: #fff;
+      color: #111;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .phone {
+      width: min(100%, 420px);
+      min-height: 100vh;
+      min-height: 100dvh;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+    }
+
+    .status-bar {
+      height: 42px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .calculator {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 12px 20px 8px;
+    }
+
+    .display {
+      flex: 1;
+      min-height: 180px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 20px 4px 30px;
+      overflow: hidden;
+      font-size: clamp(48px, 14vw, 76px);
+      font-weight: 300;
+      white-space: nowrap;
+    }
+
+    .keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 13px;
+      padding-bottom: 18px;
+    }
+
+    .keys button {
+      aspect-ratio: 1;
+      border: none;
+      border-radius: 50%;
+      background: #f1f1f1;
+      color: #111;
+      font-size: 25px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: filter 0.12s, transform 0.08s;
+    }
+
+    .keys button:active {
+      filter: brightness(0.88);
+      transform: scale(0.96);
+    }
+
+    .keys button.utility {
+      background: #dedede;
+    }
+
+    .keys button.operator,
+    .keys button.equals {
+      background: #ff9f0a;
+      color: #fff;
+    }
+
+    .keys button.operator.selected {
+      background: #fff;
+      color: #ff9f0a;
+      outline: 2px solid #ff9f0a;
+    }
+
+    .keys button.zero {
+      grid-column: span 2;
+      aspect-ratio: auto;
+      border-radius: 50px;
+      text-align: left;
+      padding-left: 30px;
+    }
+
+    .navigation {
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-pill {
+      width: 108px;
+      height: 4px;
+      border-radius: 10px;
+      background: #111;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="phone">
+    <header class="status-bar">
+      <span>9:41</span>
+      <span>● ● ●</span>
+    </header>
+
+    <section class="calculator" aria-label="Calculator">
+      <output class="display" id="display" aria-live="polite">0</output>
+
+      <div class="keys">
+        <button type="button" class="utility" data-action="clear">AC</button>
+        <button type="button" class="utility" data-action="sign">+/−</button>
+        <button type="button" class="utility" data-action="percent">%</button>
+        <button type="button" class="operator" data-action="operator" data-value="÷">÷</button>
+
+        <button type="button" data-action="digit" data-value="7">7</button>
+        <button type="button" data-action="digit" data-value="8">8</button>
+        <button type="button" data-action="digit" data-value="9">9</button>
+        <button type="button" class="operator" data-action="operator" data-value="×">×</button>
+
+        <button type="button" data-action="digit" data-value="4">4</button>
+        <button type="button" data-action="digit" data-value="5">5</button>
+        <button type="button" data-action="digit" data-value="6">6</button>
+        <button type="button" class="operator" data-action="operator" data-value="−">−</button>
+
+        <button type="button" data-action="digit" data-value="1">1</button>
+        <button type="button" data-action="digit" data-value="2">2</button>
+        <button type="button" data-action="digit" data-value="3">3</button>
+        <button type="button" class="operator" data-action="operator" data-value="+">+</button>
+ 
